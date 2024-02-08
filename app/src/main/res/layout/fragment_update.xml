@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="NoteNesnesi"
+            type="com.helin.roomnoteapp.data.entity.Note" />
+        <variable
+            name="NoteUpdateFragment"
+            type="com.helin.roomnoteapp.ui.UpdateFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context=".ui.AddNoteFragment">
+
+        <EditText
+            android:id="@+id/editTitleUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@{NoteNesnesi.note_title}"
+            android:hint="Enter Title"
+            android:inputType="textMultiLine"
+            android:textColor="@color/card"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="32dp"
+            app:cardBackgroundColor="#EFD6D2"
+            app:cardCornerRadius="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="@{() -> NoteUpdateFragment.back(backBtn)}"
+                    android:foreground="@drawable/back_icon"
+                    android:foregroundGravity="center"
+                    app:backgroundTint="@color/icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/updateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:onClick="@{() -> NoteUpdateFragment.update(NoteNesnesi.note_id,editTitleUpdate.getText().toString(),editTextUpdate.getText().toString())}"
+                    android:foreground="@drawable/done_im"
+                    android:foregroundGravity="center"
+                    app:backgroundTint="@color/icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/editTextUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:fontFamily="@font/abril_fatface"
+            android:gravity="start|top"
+            android:hint="Enter Note"
+            android:text="@{NoteNesnesi.note_desc}"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTitleUpdate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

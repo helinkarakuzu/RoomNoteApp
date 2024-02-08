@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.helin.roomnoteapp.ui.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/ekleGecis"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.helin.roomnoteapp.ui.AddNoteFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/addNoteAnasayfayaGidis"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.helin.roomnoteapp.ui.UpdateFragment"
+        android:label="UpdateFragment" >
+        <action
+            android:id="@+id/updateAnasayfayaGidis"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="note"
+            app:argType="com.helin.roomnoteapp.data.entity.Note" />
+    </fragment>
+</navigation>
